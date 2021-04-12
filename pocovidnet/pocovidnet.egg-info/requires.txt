@@ -1,0 +1,7 @@
+numpy
+tensorflow
+scikit-learn
+matplotlib
+imutils
+opencv-contrib-python
+flask

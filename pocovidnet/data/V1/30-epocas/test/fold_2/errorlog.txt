@@ -1,0 +1,261 @@
+(base) PS D:\Fuentes\Bnamericas\covid19_ultrasound\pocovidnet>  python scripts/train_covid19.py --data_dir ../data/cross_validation/ --fold 2 --epochs 30 -m data/V1/30-epocas
+2021-03-29 16:10:59.668444: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+Model parameters: {'data_dir': '../data/cross_validation/', 'model_dir': 'data/V1/30-epocas', 'fold': 2, 'learning_rate': 0.0001, 'epochs': 30, 'batch_size': 16, 'trainable_base_layers': 1, 'img_width': 224, 'img_height': 224, 'model_id': 'vgg_base', 'log_softmax': False, 'model_name': 'test', 'hidden_size': 64}
+Loading images...
+selected fold: 2
+
+Number of training samples: 1710
+Number of testing samples: 439
+Class mappings are: ['covid' 'pneumonia' 'regular']
+2021-03-29 16:11:13.385103: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-03-29 16:11:13.386446: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library nvcuda.dll
+2021-03-29 16:11:14.338026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: GeForce GTX 1050 computeCapability: 6.1
+coreClock: 1.493GHz coreCount: 5 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 104.43GiB/s
+2021-03-29 16:11:14.338303: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-03-29 16:11:14.354763: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-03-29 16:11:14.354943: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-03-29 16:11:14.362060: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-03-29 16:11:14.364731: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-03-29 16:11:14.371371: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-03-29 16:11:14.378404: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-03-29 16:11:14.380106: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-03-29 16:11:14.380388: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-03-29 16:11:14.382432: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-03-29 16:11:14.383542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: GeForce GTX 1050 computeCapability: 6.1
+coreClock: 1.493GHz coreCount: 5 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 104.43GiB/s
+2021-03-29 16:11:14.383759: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-03-29 16:11:14.384418: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-03-29 16:11:14.385145: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-03-29 16:11:14.389779: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-03-29 16:11:14.393368: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-03-29 16:11:14.393999: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-03-29 16:11:14.394644: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-03-29 16:11:14.395364: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-03-29 16:11:14.396071: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-03-29 16:11:15.240809: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-03-29 16:11:15.241009: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0
+2021-03-29 16:11:15.243703: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N
+2021-03-29 16:11:15.248157: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2987 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2021-03-29 16:11:15.249855: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+Compiling model...
+Model has 14747971 parameters
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         [(None, 224, 224, 3)]     0
+_________________________________________________________________
+block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792
+_________________________________________________________________
+block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928
+_________________________________________________________________
+block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0
+_________________________________________________________________
+block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856
+_________________________________________________________________
+block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584
+_________________________________________________________________
+block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0
+_________________________________________________________________
+block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168
+_________________________________________________________________
+block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0
+_________________________________________________________________
+block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160
+_________________________________________________________________
+block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0
+_________________________________________________________________
+block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0
+_________________________________________________________________
+average_pooling2d (AveragePo (None, 1, 1, 512)         0
+_________________________________________________________________
+flatten (Flatten)            (None, 512)               0
+_________________________________________________________________
+dense (Dense)                (None, 64)                32832
+_________________________________________________________________
+batch_normalization (BatchNo (None, 64)                256
+_________________________________________________________________
+re_lu (ReLU)                 (None, 64)                0
+_________________________________________________________________
+dropout (Dropout)            (None, 64)                0
+_________________________________________________________________
+dense_1 (Dense)              (None, 3)                 195
+=================================================================
+Total params: 14,747,971
+Trainable params: 2,392,963
+Non-trainable params: 12,355,008
+_________________________________________________________________
+Model summary None
+Starting training model...
+d:\anaconda3\lib\site-packages\tensorflow\python\keras\engine\training.py:1844: UserWarning: `Model.fit_generator` is deprecated and will be removed in a future version. Please use `Model.fit`, which supports generators.
+  warnings.warn('`Model.fit_generator` is deprecated and '
+2021-03-29 16:11:17.016538: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+Epoch 1/30
+2021-03-29 16:11:19.112832: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-03-29 16:11:19.624063: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-03-29 16:11:19.968267: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-03-29 16:11:20.965386: I tensorflow/core/platform/windows/subprocess.cc:308] SubProcess ended with return code: 0
+
+2021-03-29 16:11:21.036802: I tensorflow/core/platform/windows/subprocess.cc:308] SubProcess ended with return code: 0
+
+2021-03-29 16:11:22.318783: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+ 40/106 [==========>...................] - ETA: 19s - loss: 1.0177 - accuracy: 0.61572021-03-29 16:11:41.115881: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.47GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+106/106 [==============================] - ETA: 0s - loss: 0.9232 - accuracy: 0.64452021-03-29 16:12:08.566912: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.57GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+106/106 [==============================] - 64s 495ms/step - loss: 0.9219 - accuracy: 0.6450 - val_loss: 1.0196 - val_accuracy: 0.4465
+
+Epoch 00001: val_accuracy improved from -inf to 0.44647, saving model to data/V1/30-epocas\test\fold_2\best_weights
+2021-03-29 16:12:22.364935: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+2021-03-29 16:12:29.554918: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.46GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2021-03-29 16:12:29.555328: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.04GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2021-03-29 16:12:29.659345: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.74GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2021-03-29 16:12:33.194355: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.55GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2021-03-29 16:12:44.723001: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.49GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2021-03-29 16:12:44.723414: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.75GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2021-03-29 16:12:47.424290: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.41GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+Balanced accuracy is: {'val_balanced': 0.5414879089368386}
+Epoch 2/30
+106/106 [==============================] - 33s 305ms/step - loss: 0.5871 - accuracy: 0.7815
+Balanced accuracy is: {'val_balanced': 0.8937134020777749}
+Epoch 3/30
+106/106 [==============================] - 33s 313ms/step - loss: 0.4831 - accuracy: 0.8173
+Balanced accuracy is: {'val_balanced': 0.7365414072695771}
+Epoch 4/30
+106/106 [==============================] - 34s 317ms/step - loss: 0.4170 - accuracy: 0.8472
+Balanced accuracy is: {'val_balanced': 0.7969535234191775}
+Epoch 5/30
+106/106 [==============================] - 34s 319ms/step - loss: 0.3704 - accuracy: 0.8555
+Balanced accuracy is: {'val_balanced': 0.7084830768254123}
+Epoch 6/30
+106/106 [==============================] - 34s 321ms/step - loss: 0.3820 - accuracy: 0.8611
+Balanced accuracy is: {'val_balanced': 0.7471752632758674}
+Epoch 7/30
+106/106 [==============================] - 34s 318ms/step - loss: 0.3473 - accuracy: 0.8864
+Balanced accuracy is: {'val_balanced': 0.720784133213281}
+Epoch 8/30
+106/106 [==============================] - 34s 317ms/step - loss: 0.3068 - accuracy: 0.8961
+Balanced accuracy is: {'val_balanced': 0.7199369297262294}
+Epoch 9/30
+106/106 [==============================] - 33s 312ms/step - loss: 0.2785 - accuracy: 0.9132
+Balanced accuracy is: {'val_balanced': 0.6077793452206534}
+Epoch 10/30
+106/106 [==============================] - 34s 316ms/step - loss: 0.2894 - accuracy: 0.9017
+Balanced accuracy is: {'val_balanced': 0.6646267849883827}
+Epoch 11/30
+106/106 [==============================] - 34s 318ms/step - loss: 0.2556 - accuracy: 0.9112
+Balanced accuracy is: {'val_balanced': 0.7538655114404335}
+Epoch 12/30
+106/106 [==============================] - 34s 317ms/step - loss: 0.2383 - accuracy: 0.9247
+Balanced accuracy is: {'val_balanced': 0.6992749933300955}
+Epoch 13/30
+106/106 [==============================] - 34s 315ms/step - loss: 0.2417 - accuracy: 0.9210
+Balanced accuracy is: {'val_balanced': 0.73424870036436}
+Epoch 14/30
+106/106 [==============================] - 33s 313ms/step - loss: 0.2291 - accuracy: 0.9176
+Balanced accuracy is: {'val_balanced': 0.7440038569634231}
+Epoch 15/30
+106/106 [==============================] - 34s 318ms/step - loss: 0.2333 - accuracy: 0.9258
+Balanced accuracy is: {'val_balanced': 0.7477953775018883}
+Epoch 16/30
+106/106 [==============================] - 33s 314ms/step - loss: 0.2056 - accuracy: 0.9339
+Balanced accuracy is: {'val_balanced': 0.7552356452441712}
+Epoch 17/30
+106/106 [==============================] - 34s 317ms/step - loss: 0.2077 - accuracy: 0.9307
+Balanced accuracy is: {'val_balanced': 0.7102174358227734}
+Epoch 18/30
+106/106 [==============================] - 33s 314ms/step - loss: 0.2013 - accuracy: 0.9305
+Balanced accuracy is: {'val_balanced': 0.6653908980712364}
+Epoch 19/30
+106/106 [==============================] - 34s 319ms/step - loss: 0.1962 - accuracy: 0.9332
+Balanced accuracy is: {'val_balanced': 0.696845518148942}
+Epoch 20/30
+106/106 [==============================] - 34s 318ms/step - loss: 0.1875 - accuracy: 0.9461
+Balanced accuracy is: {'val_balanced': 0.7456331887094603}
+Epoch 21/30
+106/106 [==============================] - 33s 312ms/step - loss: 0.1900 - accuracy: 0.9401
+Balanced accuracy is: {'val_balanced': 0.6859569986324399}
+Epoch 22/30
+106/106 [==============================] - 34s 316ms/step - loss: 0.1758 - accuracy: 0.9461
+Balanced accuracy is: {'val_balanced': 0.6958831155764237}
+Epoch 23/30
+106/106 [==============================] - 33s 308ms/step - loss: 0.1835 - accuracy: 0.9317
+Balanced accuracy is: {'val_balanced': 0.6525779410663538}
+Epoch 24/30
+106/106 [==============================] - 33s 309ms/step - loss: 0.1930 - accuracy: 0.9278
+Balanced accuracy is: {'val_balanced': 0.5661655138792225}
+Epoch 25/30
+106/106 [==============================] - 33s 311ms/step - loss: 0.1463 - accuracy: 0.9546
+Balanced accuracy is: {'val_balanced': 0.7738073310001843}
+Epoch 26/30
+106/106 [==============================] - 33s 314ms/step - loss: 0.1557 - accuracy: 0.9494
+Balanced accuracy is: {'val_balanced': 0.662077331185238}
+Epoch 27/30
+106/106 [==============================] - 34s 319ms/step - loss: 0.1394 - accuracy: 0.9611
+Balanced accuracy is: {'val_balanced': 0.7802411999234784}
+Epoch 28/30
+106/106 [==============================] - 34s 321ms/step - loss: 0.1448 - accuracy: 0.9519
+Balanced accuracy is: {'val_balanced': 0.7748887317769446}
+Epoch 29/30
+106/106 [==============================] - 34s 318ms/step - loss: 0.1397 - accuracy: 0.9535
+Balanced accuracy is: {'val_balanced': 0.7059853400585089}
+Epoch 30/30
+106/106 [==============================] - 34s 318ms/step - loss: 0.1644 - accuracy: 0.9421
+Balanced accuracy is: {'val_balanced': 0.7150084922559866}
+Evaluating network...
+classification report sklearn:
+              precision    recall  f1-score   support
+
+       covid       0.94      0.78      0.85       167
+   pneumonia       0.50      0.80      0.61        89
+     regular       0.66      0.56      0.61       183
+
+    accuracy                           0.69       439
+   macro avg       0.70      0.72      0.69       439
+weighted avg       0.73      0.69      0.70       439
+
+confusion matrix:
+[[131   0  36]
+ [  0  71  18]
+ [  9  71 103]]
+Inicio gráfico
+cantidad de epocas: 30
+Fin gráfico
+inicio data
+accuracy: [0.6948052048683167, 0.7922077775001526, 0.8282172083854675, 0.851830005645752, 0.8595041036605835, 0.8719007968902588, 0.8860684633255005, 0.9002361297607422, 0.9025974273681641, 0.8984651565551758, 0.9155844449996948, 0.9191263318061829, 0.9203069806098938, 0.9191263318061829, 0.9291617274284363, 0.9273908138275146, 0.9315230250358582, 0.9397875070571899, 0.93388432264328, 0.9403778314590454, 0.9391971826553345, 0.9557260870933533, 0.9362455606460571, 0.9403778314590454, 0.9486422538757324, 0.9492325782775879, 0.9592680335044861, 0.9486422538757324, 0.9462810158729553, 0.9403778314590454]
+loss: [0.7847275733947754, 0.5562654137611389, 0.4624597132205963, 0.40992578864097595, 0.3668423891067505, 0.3679744303226471, 0.33585357666015625, 0.2937334477901459, 0.2960039973258972, 0.2871067225933075, 0.2439643144607544, 0.2433108687400818, 0.24997584521770477, 0.24182309210300446, 0.2222377061843872, 0.21159379184246063, 0.21370814740657806, 0.19661977887153625, 0.1968759149312973, 0.1916065812110901, 0.18837743997573853, 0.15663613379001617, 0.18061058223247528, 0.1785566508769989, 0.1535482108592987, 0.15617609024047852, 0.1433219015598297, 0.1548488736152649, 0.15711157023906708, 0.1743195801973343]
+Traceback (most recent call last):
+  File "scripts/train_covid19.py", line 283, in <module>
+    print(f'val_accuracy: {val_accuracy}')
+NameError: name 'val_accuracy' is not defined
+convert the history.history dict to a pandas DataFrame:
+No se pudo guardar la data
+Traceback (most recent call last):
+  File "scripts/train_covid19.py", line 294, in <module>
+    hist_df = pd.DataFrame(H.history)
+  File "d:\anaconda3\lib\site-packages\pandas\core\frame.py", line 468, in __init__
+    mgr = init_dict(data, index, columns, dtype=dtype)
+  File "d:\anaconda3\lib\site-packages\pandas\core\internals\construction.py", line 283, in init_dict
+    return arrays_to_mgr(arrays, data_names, index, columns, dtype=dtype)
+  File "d:\anaconda3\lib\site-packages\pandas\core\internals\construction.py", line 78, in arrays_to_mgr
+    index = extract_index(arrays)
+  File "d:\anaconda3\lib\site-packages\pandas\core\internals\construction.py", line 397, in extract_index
+    raise ValueError("arrays must all be same length")
+ValueError: arrays must all be same length
+Done, shuttting down!
+Done, shuttting down!
