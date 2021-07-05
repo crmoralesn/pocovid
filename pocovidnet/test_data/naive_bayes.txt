@@ -1,0 +1,105 @@
+test_model_0_no_filter.csv
+Accuracy: 1.0
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       112
+           1       1.00      1.00      1.00        87
+           2       1.00      1.00      1.00        40
+
+    accuracy                           1.00       239
+   macro avg       1.00      1.00      1.00       239
+weighted avg       1.00      1.00      1.00       239
+
+[[112   0   0]
+ [  0  87   0]
+ [  0   0  40]]
+test_model_1_2d_filter.csv
+Accuracy: 1.0
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       112
+           1       1.00      1.00      1.00        87
+           2       1.00      1.00      1.00        40
+
+    accuracy                           1.00       239
+   macro avg       1.00      1.00      1.00       239
+weighted avg       1.00      1.00      1.00       239
+
+[[112   0   0]
+ [  0  87   0]
+ [  0   0  40]]
+test_model_2_blur_filter.csv
+Accuracy: 1.0
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       112
+           1       1.00      1.00      1.00        87
+           2       1.00      1.00      1.00        40
+
+    accuracy                           1.00       239
+   macro avg       1.00      1.00      1.00       239
+weighted avg       1.00      1.00      1.00       239
+
+[[112   0   0]
+ [  0  87   0]
+ [  0   0  40]]
+test_model_3_mediablur_filter.csv
+Accuracy: 1.0
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       112
+           1       1.00      1.00      1.00        87
+           2       1.00      1.00      1.00        40
+
+    accuracy                           1.00       239
+   macro avg       1.00      1.00      1.00       239
+weighted avg       1.00      1.00      1.00       239
+
+[[112   0   0]
+ [  0  87   0]
+ [  0   0  40]]
+test_model_4_laplacian_filter.csv
+Accuracy: 1.0
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       112
+           1       1.00      1.00      1.00        87
+           2       1.00      1.00      1.00        40
+
+    accuracy                           1.00       239
+   macro avg       1.00      1.00      1.00       239
+weighted avg       1.00      1.00      1.00       239
+
+[[112   0   0]
+ [  0  87   0]
+ [  0   0  40]]
+test_model_5_sobel_filter.csv
+Accuracy: 1.0
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       112
+           1       1.00      1.00      1.00        87
+           2       1.00      1.00      1.00        40
+
+    accuracy                           1.00       239
+   macro avg       1.00      1.00      1.00       239
+weighted avg       1.00      1.00      1.00       239
+
+[[112   0   0]
+ [  0  87   0]
+ [  0   0  40]]
+test_model_6_equalizeHist_filter.csv
+Accuracy: 1.0
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       112
+           1       1.00      1.00      1.00        87
+           2       1.00      1.00      1.00        40
+
+    accuracy                           1.00       239
+   macro avg       1.00      1.00      1.00       239
+weighted avg       1.00      1.00      1.00       239
+
+[[112   0   0]
+ [  0  87   0]
+ [  0   0  40]]
