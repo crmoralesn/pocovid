@@ -1,0 +1,174 @@
+(base) MacBook-Pro-de-Soporte-4:covid19_pocus_ultrasound javierdelao$ python3 pocovidnet/scripts/train_covid19.py --data_dir data/cross_validation/ --fold 0 --epochs 15
+Loading images...
+Model is called : pocus_fold_0
+selected fold: 0
+2021-06-29 14:46:49.639674: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-06-29 14:46:49.639951: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+Number of training samples: 781
+Number of testing samples: 239
+Class mappings are: ['covid' 'pneumonia' 'regular']
+Compiling model...
+Model has 14747971 parameters
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         [(None, 224, 224, 3)]     0
+_________________________________________________________________
+block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792
+_________________________________________________________________
+block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928
+_________________________________________________________________
+block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0
+_________________________________________________________________
+block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856
+_________________________________________________________________
+block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584
+_________________________________________________________________
+block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0
+_________________________________________________________________
+block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168
+_________________________________________________________________
+block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0
+_________________________________________________________________
+block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160
+_________________________________________________________________
+block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0
+_________________________________________________________________
+block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0
+_________________________________________________________________
+average_pooling2d (AveragePo (None, 1, 1, 512)         0
+_________________________________________________________________
+flatten (Flatten)            (None, 512)               0
+_________________________________________________________________
+dense (Dense)                (None, 64)                32832
+_________________________________________________________________
+batch_normalization (BatchNo (None, 64)                256
+_________________________________________________________________
+re_lu (ReLU)                 (None, 64)                0
+_________________________________________________________________
+dropout (Dropout)            (None, 64)                0
+_________________________________________________________________
+dense_1 (Dense)              (None, 3)                 195
+=================================================================
+Total params: 14,747,971
+Trainable params: 2,392,963
+Non-trainable params: 12,355,008
+_________________________________________________________________
+Model summary None
+Starting training model...
+/Users/javierdelao/Library/Python/3.8/lib/python/site-packages/tensorflow/python/keras/engine/training.py:1844: UserWarning: `Model.fit_generator` is deprecated and will be removed in a future version. Please use `Model.fit`, which supports generators.
+  warnings.warn('`Model.fit_generator` is deprecated and '
+2021-06-29 14:47:09.394484: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+Epoch 1/15
+48/48 [==============================] - 161s 3s/step - loss: 1.1293 - accuracy: 0.4960 - val_loss: 0.8451 - val_accuracy: 0.4979
+
+Epoch 00001: val_accuracy improved from -inf to 0.49791, saving model to models/fold_0_epoch_01
+2021-06-29 14:49:51.319842: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+Balanced accuracy is: {'val_balanced': 0.36015325670498083}
+Epoch 2/15
+48/48 [==============================] - 152s 3s/step - loss: 0.6729 - accuracy: 0.7227 - val_loss: 0.7349 - val_accuracy: 0.7155
+
+Epoch 00002: val_accuracy improved from 0.49791 to 0.71548, saving model to models/fold_0_epoch_02
+Balanced accuracy is: {'val_balanced': 0.6995279146141216}
+Epoch 3/15
+48/48 [==============================] - 153s 3s/step - loss: 0.5199 - accuracy: 0.7953 - val_loss: 0.7064 - val_accuracy: 0.7406
+
+Epoch 00003: val_accuracy improved from 0.71548 to 0.74059, saving model to models/fold_0_epoch_03
+Balanced accuracy is: {'val_balanced': 0.775458401751505}
+Epoch 4/15
+48/48 [==============================] - 152s 3s/step - loss: 0.5518 - accuracy: 0.7746 - val_loss: 0.6755 - val_accuracy: 0.7280
+
+Epoch 00004: val_accuracy did not improve from 0.74059
+Balanced accuracy is: {'val_balanced': 0.7665298303229338}
+Epoch 5/15
+48/48 [==============================] - 166s 3s/step - loss: 0.3982 - accuracy: 0.8530 - val_loss: 0.6304 - val_accuracy: 0.7238
+
+Epoch 00005: val_accuracy did not improve from 0.74059
+Balanced accuracy is: {'val_balanced': 0.7581964969896005}
+Epoch 6/15
+48/48 [==============================] - 162s 3s/step - loss: 0.3898 - accuracy: 0.8596 - val_loss: 0.7261 - val_accuracy: 0.7490
+
+Epoch 00006: val_accuracy improved from 0.74059 to 0.74895, saving model to models/fold_0_epoch_06
+Balanced accuracy is: {'val_balanced': 0.7867679255610289}
+Epoch 7/15
+48/48 [==============================] - 153s 3s/step - loss: 0.3315 - accuracy: 0.8759 - val_loss: 0.7993 - val_accuracy: 0.7197
+
+Epoch 00007: val_accuracy did not improve from 0.74895
+Balanced accuracy is: {'val_balanced': 0.7712917350848385}
+Epoch 8/15
+48/48 [==============================] - 153s 3s/step - loss: 0.3225 - accuracy: 0.8703 - val_loss: 0.5347 - val_accuracy: 0.7699
+
+Epoch 00008: val_accuracy improved from 0.74895 to 0.76987, saving model to models/fold_0_epoch_08
+Balanced accuracy is: {'val_balanced': 0.7909345922276957}
+Epoch 9/15
+48/48 [==============================] - 152s 3s/step - loss: 0.3116 - accuracy: 0.8771 - val_loss: 0.5841 - val_accuracy: 0.7866
+
+Epoch 00009: val_accuracy improved from 0.76987 to 0.78661, saving model to models/fold_0_epoch_09
+Balanced accuracy is: {'val_balanced': 0.8019841269841269}
+Epoch 10/15
+48/48 [==============================] - 154s 3s/step - loss: 0.3114 - accuracy: 0.8805 - val_loss: 0.5145 - val_accuracy: 0.7699
+
+Epoch 00010: val_accuracy did not improve from 0.78661
+Balanced accuracy is: {'val_balanced': 0.790079365079365}
+Epoch 11/15
+48/48 [==============================] - 153s 3s/step - loss: 0.2821 - accuracy: 0.9008 - val_loss: 0.5033 - val_accuracy: 0.7866
+
+Epoch 00011: val_accuracy did not improve from 0.78661
+Balanced accuracy is: {'val_balanced': 0.8028393541324575}
+Epoch 12/15
+48/48 [==============================] - 152s 3s/step - loss: 0.2832 - accuracy: 0.8939 - val_loss: 0.7065 - val_accuracy: 0.7490
+
+Epoch 00012: val_accuracy did not improve from 0.78661
+Balanced accuracy is: {'val_balanced': 0.7439107827038862}
+Epoch 13/15
+48/48 [==============================] - 155s 3s/step - loss: 0.2827 - accuracy: 0.8992 - val_loss: 0.8805 - val_accuracy: 0.7699
+
+Epoch 00013: val_accuracy did not improve from 0.78661
+Balanced accuracy is: {'val_balanced': 0.8016488779419815}
+Epoch 14/15
+48/48 [==============================] - 152s 3s/step - loss: 0.2282 - accuracy: 0.9231 - val_loss: 0.5811 - val_accuracy: 0.7866
+
+Epoch 00014: val_accuracy did not improve from 0.78661
+Balanced accuracy is: {'val_balanced': 0.8135536398467433}
+Epoch 15/15
+48/48 [==============================] - 155s 3s/step - loss: 0.1986 - accuracy: 0.9393 - val_loss: 0.6439 - val_accuracy: 0.7615
+
+Epoch 00015: val_accuracy did not improve from 0.78661
+Balanced accuracy is: {'val_balanced': 0.7849822112753148}
+Evaluating network...
+classification report sklearn:
+              precision    recall  f1-score   support
+
+       covid       0.94      0.78      0.85       112
+   pneumonia       0.95      0.68      0.79        87
+     regular       0.43      0.90      0.58        40
+
+    accuracy                           0.76       239
+   macro avg       0.77      0.78      0.74       239
+weighted avg       0.86      0.76      0.78       239
+
+confusion matrix:
+[[87  3 22]
+ [ 2 59 26]
+ [ 4  0 36]]
+Saving COVID-19 detector model on pocus_fold_0 data...
+models/pocus_fold_0
+Done, shuttting down!
+(base) MacBook-Pro-de-Soporte-4:covid19_pocus_ultrasound javierdelao$
